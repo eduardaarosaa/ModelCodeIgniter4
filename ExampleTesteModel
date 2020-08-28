@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models\Examples;
+
+use \CodeIgniter\Model;
+
+class CompanyConnectionsModel extends Model
+{
+
+    protected $table = 'tb_example';
+    protected $primaryKey = 'example_id;
+
+    protected $returnType = 'object';
+    protected $useSoftDeletes = false;
+
+    protected $useTimestamps = false;
+
+    protected $allowedFields = ['name', 'age'];
+
+    protected $validationMessages = [];
+    protected $skipValidation = false;
+
+    public function getExample($exampleId)
+    {
+        $this->select('name', 'age')
+            ->where("example_id =" . $exampleID );
+        // usado quando retorna 1 dado ou pode ser usado $this->findAll(); para retornar todos
+        $res = $this->first();
+        return $res;
+    }
+}
